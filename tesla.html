@@ -1,0 +1,681 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikola Tesla - Vizioner Daho</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #0a1a2d;
+            --secondary-color: #1a3a5f;
+            --accent-color: #00d4ff;
+            --text-color: #e6f7ff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .liquid-shape {
+            position: absolute;
+            filter: blur(40px);
+            opacity: 0.7;
+            border-radius: 50%;
+        }
+
+        .shape-1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(45deg, #ff0080, #00d4ff);
+            top: -300px;
+            left: -200px;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .shape-2 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(45deg, #00d4ff, #8000ff);
+            bottom: -250px;
+            right: -150px;
+            animation: float 18s infinite ease-in-out reverse;
+        }
+
+        .shape-3 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, #8000ff, #ff0080);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 12s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        header {
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--accent-color), #ffffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .tesla-portrait {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portrait-frame {
+            width: 100%;
+            max-width: 500px;
+            height: 600px;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portrait-frame::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-color), transparent, var(--accent-color));
+            z-index: -1;
+            border-radius: 22px;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .tesla-img {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            border-radius: 15px;
+            filter: sepia(0.3) contrast(1.1) brightness(1.05);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .intro-text {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .intro-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .intro-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            font-size: 1.5rem;
+        }
+
+        .timeline {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline li {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--accent-color);
+            position: relative;
+        }
+
+        .timeline li::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .inventions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .invention-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .invention-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .invention-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-section {
+            width: 100%;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent-color);
+            position: absolute;
+            opacity: 0.5;
+        }
+
+        .quote::before {
+            top: 0;
+            left: 0;
+        }
+
+        .quote::after {
+            bottom: -2rem;
+            right: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section {
+                flex-direction: column;
+            }
+            
+            .portrait-frame {
+                height: 400px;
+            }
+            
+            .quote {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="liquid-bg">
+        <div class="liquid-shape shape-1"></div>
+        <div class="liquid-shape shape-2"></div>
+        <div class="liquid-shape shape-3"></div>
+    </div>
+
+    <header>
+        <h1>NIKOLA TESLA</h1>
+        <p class="subtitle">Dunyoni Elektrlashtirgan Vizioner Daho</p>
+    </header>
+
+    <div class="container">
+        <section class="hero-section">
+            <div class="tesla-portrait">
+                <div class="portrait-frame">
+                    <!-- Tesla portreti JavaScript orqali qo'shiladi -->
+                </div>
+            </div>
+            <div class="intro-text">
+                <h2>XX Asrni Ixtiro Qilgan Odam</h2>
+                <p>Nikola Tesla (1856-1943) - serb-amerikalik ixtirochi, elektroteknik muhandis, mexanik muhandis va futurist bo'lib, zamonaviy o'zgaruvchan tok (AC) elektr ta'minoti tizimini loyihalashga qo'shgan hissasi bilan tanilgan.</p>
+                <p>Uning ixtirolari, patentlari va nazariy ishlari simsiz aloqa va radioning asosini tashkil qiladi. U, shuningdek, yuqori kuchlanishli, yuqori chastotali quvvat eksperimentlari bilan ham tanilgan.</p>
+                <p>Teslaning ko'rinishi o'z davridan ancha oldinga yetib bordi - u simsiz energiya va ma'lumotlar bilan bog'langan dunyoni tasavvur qildi, bu bashorat bizning zamonaviy raqamli davrimizda asosan amalga oshdi.</p>
+            </div>
+        </section>
+
+        <div class="glass-card">
+            <h2 class="card-title"><i class="fas fa-baby"></i> Bolalik & Ta'lim</h2>
+            <p>1856-yil 10-iyulda Smilyan shahrida (Avstriya imperiyasi, hozirgi Xorvatiya) tug'ilgan Tesla yoshligidan g'ayrioddiy aql-idrok namoyish etdi. U Gratsdagi Avstriya politexnika institutida elektrotexnika bo'yicha tahsil oldi va keyinchalik Praganing Charlz-Ferdinand universitetida o'qidi.</p>
+            <p>Uning fotografik xotirasi va murakkab qurilmalarni ongida tasavvur qilish qobiliyati uni elektrotexnika sohasida noyob iste'dodga aylantirdi.</p>
+        </div>
+
+        <div class="glass-card">
+            <h2 class="card-title"><i class="fas fa-history"></i> Asosiy Voqealar Xronologiyasi</h2>
+            <ul class="timeline">
+                <li>
+                    <div class="timeline-year">1884</div>
+                    <div>Thomas Edisonga tavsiyanoma xati bilan AQShga ko'chib o'tdi</div>
+                </li>
+                <li>
+                    <div class="timeline-year">1888</div>
+                    <div>AC induksion motor va transformatorni patentladi, quvvat tarqatishda inqilob qildi</div>
+                </li>
+                <li>
+                    <div class="timeline-year">1891</div>
+                    <div>Tesla g'altagini ixtiro qildi, yuqori kuchlanishli, past tokli elektr energiyasini yaratish imkonini berdi</div>
+                </li>
+                <li>
+                    <div class="timeline-year">1893</div>
+                    <div>Butunjahon Kolumb ko'rgazmasida simsiz quvvat uzatishni namoyish etdi va vakuum naychalarni simlarsiz yoritdi</div>
+                </li>
+                <li>
+                    <div class="timeline-year">1895</div>
+                    <div>Niagara sharsharasida birinchi gidroelektr stantsiyasini loyihaladi, elektr energiyasi tarixidagi muhim bosqich</div>
+                </li>
+                <li>
+                    <div class="timeline-year">1943</div>
+                    <div>86 yoshida Nyu-Yorker mehmonxonasining 3327-xonasida yolg'iz vafot etdi</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="glass-card">
+            <h2 class="card-title"><i class="fas fa-lightbulb"></i> Asosiy Ixtirolar & Hissalar</h2>
+            <div class="inventions-grid">
+                <div class="invention-item">
+                    <div class="invention-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>O'zgaruvchan Tok</h3>
+                    <p>Quvvat uzatishda inqilob</p>
+                </div>
+                <div class="invention-item">
+                    <div class="invention-icon"><i class="fas fa-satellite-dish"></i></div>
+                    <h3>Tesla G'altagi</h3>
+                    <p>Yuqori kuchlanishli rezonans transformatori</p>
+                </div>
+                <div class="invention-item">
+                    <div class="invention-icon"><i class="fas fa-broadcast-tower"></i></div>
+                    <h3>Simsiz Uzatish</h3>
+                    <p>Radio va WiFi ning dastlabki tushunchalari</p>
+                </div>
+                <div class="invention-item">
+                    <div class="invention-icon"><i class="fas fa-turbine"></i></div>
+                    <h3>Induksion Motor</h3>
+                    <p>Zamonaviy sanoat motorlarining asosi</p>
+                </div>
+                <div class="invention-item">
+                    <div class="invention-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Teleavtomat</h3>
+                    <p>Birinchi masofadan boshqariladigan qurilma</p>
+                </div>
+                <div class="invention-item">
+                    <div class="invention-icon"><i class="fas fa-wind"></i></div>
+                    <h3>Pervorsiz Turbina</h3>
+                    <p>Samarali chegaraviy qatlam turbinasi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2 class="card-title"><i class="fas fa-gem"></i> Meros & Ta'sir</h2>
+            <p>Teslaning ishi zamonaviy elektr quvvat tizimlari va simsiz aloqaning asosini qo'ydi. U nisbiy nomuslikda vafot etganiga qaramanda, uning hissasi endi keng tan olingan.</p>
+            <p>Magnit oqim zichligi uchun SI birligi - tesla, uning sharafiga nomlangan. Uning surati pul, marka va ommaviy axborot vositalarida paydo bo'ldi va bu uning fan va innovatsiyalar madaniyatining madaniy belgisi sifatidagi maqomini mustahkamladı.</p>
+            <p>Bugun, Teslaning qayta tiklanadigan energiya bilan quvvatlanadigan bog'langan dunyo haqidagi ko'rinishi hech qachon bo'lmaganday dolzarb ko'rinadi, bu esa fan va muhandislikning yangi avlodlariga ilhom beradi.</p>
+        </div>
+
+        <section class="quote-section">
+            <div class="glass-card">
+                <p class="quote">Hozirgi zamon ularniki; men haqiqatda kim uchun ishlagan kelajak meniki.</p>
+                <p style="margin-top: 1.5rem; text-align: right;">- Nikola Tesla</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2023 Nikola Tesla - Vizioner Daho</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Tesla portretini Canvas yordamida yaratish
+        document.addEventListener('DOMContentLoaded', function() {
+            const portraitFrame = document.querySelector('.portrait-frame');
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Canvas o'lchamlarini belgilash
+            canvas.width = 500;
+            canvas.height = 600;
+            
+            // Tesla portretini dasturiy yo'l bilan chizish
+            drawTeslaPortrait(ctx, canvas.width, canvas.height);
+            
+            // Canvasni rasmga aylantirish va DOMga qo'shish
+            const teslaImg = new Image();
+            teslaImg.src = canvas.toDataURL('image/png');
+            teslaImg.classList.add('tesla-img');
+            portraitFrame.appendChild(teslaImg);
+            
+            // Shisha kartalarga suzuvchi effekt qo'shish
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const angleY = (x - centerX) / 25;
+                    const angleX = (centerY - y) / 25;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(10px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                });
+            });
+        });
+
+        function drawTeslaPortrait(ctx, width, height) {
+            // Canvas chizish usullari yordamida Teslaning qahramonona portretini yaratish
+            ctx.fillStyle = '#1a3a5f';
+            ctx.fillRect(0, 0, width, height);
+            
+            // Yuz shaklini chizish
+            ctx.beginPath();
+            ctx.ellipse(width/2, height/2 - 20, 120, 160, 0, 0, Math.PI * 2);
+            ctx.fillStyle = '#f5d5b0';
+            ctx.fill();
+            
+            // Sochni chizish
+            ctx.beginPath();
+            ctx.arc(width/2, height/2 - 80, 100, 0, Math.PI * 2);
+            ctx.fillStyle = '#2c1b0e';
+            ctx.fill();
+            
+            // Peshona sochlarini chizish
+            ctx.beginPath();
+            ctx.moveTo(width/2 - 80, height/2 - 60);
+            ctx.bezierCurveTo(width/2 - 40, height/2 - 120, width/2 + 40, height/2 - 120, width/2 + 80, height/2 - 60);
+            ctx.fillStyle = '#2c1b0e';
+            ctx.fill();
+            
+            // Ko'zlarni chizish
+            // Chap ko'z
+            ctx.beginPath();
+            ctx.ellipse(width/2 - 40, height/2 - 10, 20, 15, 0, 0, Math.PI * 2);
+            ctx.fillStyle = '#1a0f02';
+            ctx.fill();
+            
+            // O'ng ko'z
+            ctx.beginPath();
+            ctx.ellipse(width/2 + 40, height/2 - 10, 20, 15, 0, 0, Math.PI * 2);
+            ctx.fillStyle = '#1a0f02';
+            ctx.fill();
+            
+            // Qoshlami chizish
+            ctx.beginPath();
+            ctx.moveTo(width/2 - 60, height/2 - 30);
+            ctx.lineTo(width/2 - 20, height/2 - 35);
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = '#2c1b0e';
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(width/2 + 60, height/2 - 30);
+            ctx.lineTo(width/2 + 20, height/2 - 35);
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = '#2c1b0e';
+            ctx.stroke();
+            
+            // Burnini chizish
+            ctx.beginPath();
+            ctx.moveTo(width/2, height/2 - 10);
+            ctx.lineTo(width/2 - 10, height/2 + 30);
+            ctx.lineTo(width/2, height/2 + 35);
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#d4b089';
+            ctx.stroke();
+            
+            // Og'zini chizish
+            ctx.beginPath();
+            ctx.moveTo(width/2 - 30, height/2 + 60);
+            ctx.bezierCurveTo(width/2 - 15, height/2 + 70, width/2 + 15, height/2 + 70, width/2 + 30, height/2 + 60);
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#8b4513';
+            ctx.stroke();
+            
+            // Mo'ylovini chizish
+            ctx.beginPath();
+            ctx.moveTo(width/2 - 40, height/2 + 50);
+            ctx.bezierCurveTo(width/2 - 20, height/2 + 55, width/2 + 20, height/2 + 55, width/2 + 40, height/2 + 50);
+            ctx.bezierCurveTo(width/2 + 30, height/2 + 65, width/2 - 30, height/2 + 65, width/2 - 40, height/2 + 50);
+            ctx.fillStyle = '#2c1b0e';
+            ctx.fill();
+            
+            // Kostyum yoqasini chizish
+            ctx.beginPath();
+            ctx.moveTo(width/2 - 60, height/2 + 80);
+            ctx.lineTo(width/2 - 30, height/2 + 120);
+            ctx.lineTo(width/2 + 30, height/2 + 120);
+            ctx.lineTo(width/2 + 60, height/2 + 80);
+            ctx.fillStyle = '#0a1a2d';
+            ctx.fill();
+            
+            // Ba'zi elektr effektlarini qo'shish
+            for (let i = 0; i < 5; i++) {
+                drawLightning(ctx, width, height);
+            }
+            
+            // Yorqinlik effektini qo'shish
+            ctx.shadowColor = '#00d4ff';
+            ctx.shadowBlur = 20;
+            ctx.beginPath();
+            ctx.arc(width/2, height/2 - 20, 180, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(0, 212, 255, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
+
+        function drawLightning(ctx, width, height) {
+            const startX = Math.random() * width;
+            const startY = Math.random() * height / 2;
+            const segments = 5 + Math.floor(Math.random() * 5);
+            
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            
+            let x = startX;
+            let y = startY;
+            
+            for (let i = 0; i < segments; i++) {
+                x += (Math.random() - 0.5) * 40;
+                y += Math.random() * 30;
+                ctx.lineTo(x, y);
+            }
+            
+            ctx.strokeStyle = '#00d4ff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Yorqinlik qo'shish
+            ctx.shadowColor = '#00d4ff';
+            ctx.shadowBlur = 10;
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
+    </script>
+</body>
+</html>
